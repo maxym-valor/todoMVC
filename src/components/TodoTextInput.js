@@ -32,7 +32,7 @@ function TodoTextInput({ onSave, text, placeholder, editing, newTodo }) {
       })}
       type="text"
       placeholder={placeholder}
-      autoFocus="true"
+      autoFocus={true}
       value={currentText}
       onBlur={handleBlur}
       onChange={handleChange}

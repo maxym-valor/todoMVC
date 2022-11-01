@@ -8,6 +8,7 @@ const Link = ({ children, filter }) => {
   const { visibilityFilter } = useStore(TodoStore);
 
   return (
+    // eslint-disable-next-line
     <a
       className={classnames({ selected: filter === visibilityFilter })}
       style={{ cursor: "pointer" }}
