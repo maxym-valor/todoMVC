@@ -20,7 +20,7 @@ const Link = ({ children, filter }) => {
 
 Link.propTypes = {
   children: PropTypes.node.isRequired,
-  filter: PropTypes.string.isRequired
+  filter: PropTypes.string.isRequired,
 };
 
 export default Link;

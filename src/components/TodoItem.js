@@ -1,41 +1,41 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import classnames from "classnames";
 import TodoTextInput from "./TodoTextInput";
 
 import { editTodo, deleteTodo, completeTodo } from "../stores/todo";
 
-export default class TodoItem extends Component {
-  state = {
-    editing: false,
+export function TodoItem({ todo }) {
+  const [isEditing, setEditingState] = useState(false);
+
+  const handleDoubleClick = () => {
+    setEditingState(true);
   };
 
-  handleDoubleClick = () => {
-    this.setState({ editing: true });
-  };
-
-  handleSave = (id, text) => {
+  const handleSave = (id, text) => {
     if (text.length === 0) {
       deleteTodo(id);
     } else {
       editTodo(id, text);
     }
-    this.setState({ editing: false });
+
+    setEditingState(false);
   };
 
-  render() {
-    const { todo } = this.props;
-
-    let element;
-    if (this.state.editing) {
-      element = (
+  return (
+    <li
+      className={classnames({
+        completed: todo.completed,
+        editing: isEditing,
+      })}
+    >
+      {isEditing && (
         <TodoTextInput
           text={todo.text}
-          editing={this.state.editing}
-          onSave={(text) => this.handleSave(todo.id, text)}
+          editing={isEditing}
+          onSave={(text) => handleSave(todo.id, text)}
         />
-      );
-    } else {
-      element = (
+      )}
+      {!isEditing && (
         <div className="view">
           <input
             className="toggle"
@@ -43,21 +43,12 @@ export default class TodoItem extends Component {
             checked={todo.completed}
             onChange={() => completeTodo(todo.id)}
           />
-          <label onDoubleClick={this.handleDoubleClick}>{todo.text}</label>
+          <label onDoubleClick={handleDoubleClick}>{todo.text}</label>
           <button className="destroy" onClick={() => deleteTodo(todo.id)} />
         </div>
-      );
-    }
-
-    return (
-      <li
-        className={classnames({
-          completed: todo.completed,
-          editing: this.state.editing,
-        })}
-      >
-        {element}
-      </li>
-    );
-  }
+      )}
+    </li>
+  );
 }
+
+export default TodoItem;

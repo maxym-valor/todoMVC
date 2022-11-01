@@ -8,8 +8,6 @@ const TodoList = () => {
   return (
     <ul className="todo-list">
       {getFilteredTodos(visibilityFilter).map((todo) => {
-        console.log("todo");
-        console.log(todo);
         return <TodoItem key={todo.id} todo={todo} />;
       })}
     </ul>
