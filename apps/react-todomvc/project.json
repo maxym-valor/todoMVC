@@ -1,0 +1,7 @@
+{
+  "name": "react-todomvc",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/react-todomvc/src",
+  "projectType": "application",
+  "tags": []
+}

@@ -1,17 +1,17 @@
-import { Store } from "laco";
+import { Store } from 'laco';
 
 export const TodoStore = new Store(
   {
     todos: [
       {
-        text: "Use Laco",
+        text: 'Use Laco',
         completed: false,
         id: 0,
       },
     ],
-    visibilityFilter: "All",
+    visibilityFilter: 'All',
   },
-  "TodoStore"
+  'TodoStore'
 );
 
 export const addTodo = (text) =>
@@ -26,7 +26,7 @@ export const addTodo = (text) =>
         },
       ],
     }),
-    "Add todo"
+    'Add todo'
   );
 
 export const deleteTodo = (id) =>
@@ -34,7 +34,7 @@ export const deleteTodo = (id) =>
     ({ todos }) => ({
       todos: todos.filter((item) => item.id !== id),
     }),
-    "Delete todo"
+    'Delete todo'
   );
 
 export const editTodo = (id, text) =>
@@ -42,18 +42,17 @@ export const editTodo = (id, text) =>
     ({ todos }) => ({
       todos: todos.map((todo) => (todo.id === id ? { ...todo, text } : todo)),
     }),
-    "Edit todo"
+    'Edit todo'
   );
 
 export const completeTodo = (id) =>
   TodoStore.set(
     ({ todos }) => ({
-      todos: todos.map(
-        (todo) =>
-          todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      todos: todos.map((todo) =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
       ),
     }),
-    "Complete todo"
+    'Complete todo'
   );
 
 export const completeAllTodos = () => {
@@ -66,7 +65,7 @@ export const completeAllTodos = () => {
         completed: !areAllMarked,
       })),
     }),
-    "Complete all todos"
+    'Complete all todos'
   );
 };
 
@@ -75,7 +74,7 @@ export const clearCompletedTodos = () =>
     ({ todos }) => ({
       todos: todos.filter((t) => t.completed === false),
     }),
-    "Clear completed todos"
+    'Clear completed todos'
   );
 
 export const getTodosCount = () => TodoStore.get().todos.length;
@@ -89,19 +88,19 @@ export const setVisibilityFilter = (type) =>
     () => ({
       visibilityFilter: type,
     }),
-    "Set visibility"
+    'Set visibility'
   );
 
 export const getFilteredTodos = (visibilityFilter) => {
   const todos = TodoStore.get().todos;
   switch (visibilityFilter) {
-    case "All":
+    case 'All':
       return todos;
-    case "Completed":
+    case 'Completed':
       return todos.filter((t) => t.completed);
-    case "Active":
+    case 'Active':
       return todos.filter((t) => !t.completed);
     default:
-      throw new Error("Unknown filter: " + visibilityFilter);
+      throw new Error('Unknown filter: ' + visibilityFilter);
   }
 };
