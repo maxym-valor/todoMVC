@@ -19,15 +19,15 @@ const Footer = (props) => {
             <FilterLink filter={filter}>{filter}</FilterLink>
           </li>
         ))}
+        <Link to="/not-found" className="not-found-page-link">
+          Not found page
+        </Link>
       </ul>
       {!!completedCount && (
         <button className="clear-completed" onClick={onClearCompleted}>
           Clear completed
         </button>
       )}
-      <Link to="/not-found" float="right">
-        Not found page
-      </Link>
     </footer>
   );
 };
