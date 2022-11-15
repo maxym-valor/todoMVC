@@ -1,11 +1,11 @@
-import React from "react";
-import TodoTextInput from "./TodoTextInput";
+import React from 'react';
+import TodoTextInput from './TodoTextInput';
 
-import { addTodo } from "../stores/todo";
+import { addTodo } from '../stores/todo';
 
 const Header = () => (
   <header className="header">
-    <h1>todoBeach</h1>
+    <h1>todomvc</h1>
     <TodoTextInput
       newTodo
       onSave={(text) => {

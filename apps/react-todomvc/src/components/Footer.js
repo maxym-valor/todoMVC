@@ -1,19 +1,20 @@
-import React from "react";
-import PropTypes from "prop-types";
-import FilterLink from "../components/Link";
+import React from 'react';
+import PropTypes from 'prop-types';
+import FilterLink from '../components/Link';
+import { Link } from 'react-router-dom';
 
-const FILTER_TITLES = ["All", "Active", "Completed"];
+const FILTER_TITLES = ['All', 'Active', 'Completed'];
 
-const Footer = props => {
+const Footer = (props) => {
   const { activeCount, completedCount, onClearCompleted } = props;
-  const itemWord = activeCount === 1 ? "item" : "items";
+  const itemWord = activeCount === 1 ? 'item' : 'items';
   return (
     <footer className="footer">
       <span className="todo-count">
-        <strong>{activeCount || "No"}</strong> {itemWord} left
+        <strong>{activeCount || 'No'}</strong> {itemWord} left
       </span>
       <ul className="filters">
-        {FILTER_TITLES.map(filter => (
+        {FILTER_TITLES.map((filter) => (
           <li key={filter}>
             <FilterLink filter={filter}>{filter}</FilterLink>
           </li>
@@ -24,6 +25,9 @@ const Footer = props => {
           Clear completed
         </button>
       )}
+      <Link to="/not-found" float="right">
+        Not found page
+      </Link>
     </footer>
   );
 };
@@ -31,7 +35,7 @@ const Footer = props => {
 Footer.propTypes = {
   completedCount: PropTypes.number.isRequired,
   activeCount: PropTypes.number.isRequired,
-  onClearCompleted: PropTypes.func.isRequired
+  onClearCompleted: PropTypes.func.isRequired,
 };
 
 export default Footer;
