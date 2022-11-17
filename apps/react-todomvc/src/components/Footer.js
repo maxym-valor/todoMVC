@@ -19,9 +19,12 @@ const Footer = (props) => {
             <FilterLink filter={filter}>{filter}</FilterLink>
           </li>
         ))}
-        <Link to="/not-found" className="not-found-page-link">
-          Not found page
-        </Link>
+        <li>
+          <Link to="/not-found">Not found page</Link>
+        </li>
+        <li>
+          <Link to="/welcome">Welcome page</Link>
+        </li>
       </ul>
       {!!completedCount && (
         <button className="clear-completed" onClick={onClearCompleted}>

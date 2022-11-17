@@ -77,13 +77,6 @@ body {
   text-rendering: optimizeLegibility;
 }
 
-.not-found-page-link {
-  float: right;
-  color: inherit;
-  border: 1px solid transparent;
-  border-radius: 3px;
-}
-
 .new-todo,
 .edit {
   position: relative;
@@ -304,6 +297,7 @@ body {
   padding: 0;
   list-style: none;
   position: absolute;
+  /* display: inline; */
   right: 0;
   left: 0;
 }
@@ -314,8 +308,7 @@ body {
 
 .filters li a {
   color: inherit;
-  margin: 3px;
-  padding: 3px 7px;
+  margin: 7px;
   text-decoration: none;
   border: 1px solid transparent;
   border-radius: 3px;
